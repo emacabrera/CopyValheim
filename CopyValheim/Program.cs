@@ -12,7 +12,7 @@ namespace CopyValheim
     {
         static void Main(string[] args)
         {
-            string[] validInputs = new string[] { "D1", "D2", "NumPad1", "NumPad2" };
+            string[] validInputs = new string[] { "D1", "D2", "D0", "NumPad1", "NumPad2", "NumPad0" };
             try
             {
                 var directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "CopyValheim");
@@ -60,9 +60,13 @@ namespace CopyValheim
                 {
                     result = ComprimirDatosDelMundo(filePath);
                 }
-                else
+                else if (opcionElegida.Equals("D2") || opcionElegida.Equals("NumPad2"))
                 {
                     result = ReemplazarDatosDelMundo();
+                }
+                else
+                {
+                    Environment.Exit(0);
                 }
 
                 if (result)
@@ -208,6 +212,7 @@ namespace CopyValheim
             Console.WriteLine("Que queres hacer?");
             Console.WriteLine("1. Comprimir datos del mundo");
             Console.WriteLine("2. Reemplazar datos del mundo");
+            Console.WriteLine("0. Salir");
         }
     }
 }
